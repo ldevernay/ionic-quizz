@@ -1,15 +1,53 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Home page
+      Test your computer knowledge
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let question of questions">
-      <ion-label>{{question.question}}</ion-label>
-    </ion-item>
-  </ion-list>
+  <!-- <ion-list>
+  <ion-item *ngFor="let question of questions">
+  <ion-label>{{question.question}}</ion-label>
+  <ion-checkbox [(ngModel)]="answer"></ion-checkbox>
+</ion-item>
+</ion-list> -->
+<ion-list radio-group *ngFor="let question of questions">
+  <ion-list-header>
+    {{question.question}}
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>True</ion-label>
+    <ion-radio value="true"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>False</ion-label>
+    <ion-radio value="false"></ion-radio>
+  </ion-item>
+
+</ion-list>
+
+<!-- <ion-list>
+  <ion-item *ngFor="let question of questions">
+    <ion-list radio-group>
+      <ion-list-header>
+        Test : {{question.question}}
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>True</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>False</ion-label>
+        <ion-radio value="false"></ion-radio>
+      </ion-item>
+
+    </ion-list>
+  </ion-item>
+</ion-list> -->
 </ion-content>
