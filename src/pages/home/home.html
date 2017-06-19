@@ -6,22 +6,47 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-<ion-list radio-group *ngFor="let question of questions">
-  <ion-list-header text-wrap>
-    {{question.question}}
-  </ion-list-header>
+<!-- <ion-content>
+<ion-list radio-group *ngFor="let question of questions" (ionChange)="answer();">
+<ion-list-header text-wrap>
+{{question.question}}
+</ion-list-header>
 
-  <ion-item>
-    <ion-label>True</ion-label>
-    <ion-radio value="true"></ion-radio>
-  </ion-item>
+<ion-item>
+<ion-label>True</ion-label>
+<ion-radio value="true"></ion-radio>
+</ion-item>
 
-  <ion-item>
-    <ion-label>False</ion-label>
-    <ion-radio value="false"></ion-radio>
-  </ion-item>
+<ion-item>
+<ion-label>False</ion-label>
+<ion-radio value="false"></ion-radio>
+</ion-item>
 
 </ion-list>
+
+</ion-content> -->
+<ion-content>
+
+  <form (submit)="doSubmit($event)" [formGroup]="langForm">
+    <ion-list radio-group formControlName="langs" *ngFor="let question of questions">
+
+      <ion-list-header text-wrap>
+        {{question.question}}
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>True</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>False</ion-label>
+        <ion-radio value="false"></ion-radio>
+      </ion-item>
+
+    </ion-list>
+
+    <button type="submit" class="button">Submit</button>
+  </form>
 
 </ion-content>
