@@ -21,7 +21,7 @@ export class HomePage {
   score;
 
   constructor(public navCtrl: NavController, public http: Http, public alertCtrl: AlertController) {
-    this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
+    this.http.get('https://opentdb.com/api.php?amount=1&difficulty=easy&type=boolean').map(res => res.json()).subscribe(data => {
       this.questions = data.results;
     },
     err => {
@@ -48,7 +48,7 @@ doSubmit(event) {
     alert.present();
     this.score = 0;
   }
-  this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
+  this.http.get('https://opentdb.com/api.php?amount=1&difficulty=easy&type=boolean').map(res => res.json()).subscribe(data => {
     this.questions = data.results;
   },
   err => {
