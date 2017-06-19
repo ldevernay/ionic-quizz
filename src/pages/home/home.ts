@@ -32,8 +32,19 @@ export class HomePage {
 }
 
 doSubmit(event) {
-  console.log('Submitting form', this.questionForm.value);
-  console.log('Answer : ', this.questions[0])
+  console.log('Submitting form', this.questionForm.value.answers);
+  console.log('Answer : ', this.questions[0].correct_answer)
+  if (this.questionForm.value.answers == this.questions[0].correct_answer){
+    this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
+      this.questions = data.results;
+    },
+    err => {
+      console.log("Oops!");
+    }
+  );
+  } else {
+
+  }
   event.preventDefault();
 }
 
