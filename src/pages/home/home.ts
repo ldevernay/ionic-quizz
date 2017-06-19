@@ -17,6 +17,7 @@ export class HomePage {
   answers;
   questionForm;
   questions;
+  score;
 
   constructor(public navCtrl: NavController, public http: Http) {
     this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
@@ -29,6 +30,7 @@ export class HomePage {
   this.questionForm = new FormGroup({
     "answers": new FormControl({value: 'nope', disabled: false})
   });
+  this.score = 0;
 }
 
 doSubmit(event) {
@@ -42,8 +44,9 @@ doSubmit(event) {
       console.log("Oops!");
     }
   );
+  this.score++;
   } else {
-
+    this.score = 0;
   }
   event.preventDefault();
 }
