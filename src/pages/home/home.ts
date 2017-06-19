@@ -14,51 +14,27 @@ import {
 })
 export class HomePage {
 
-  langs;
-    langForm;
-    questions;
+  answers;
+  questionForm;
+  questions;
 
-    constructor(public navCtrl: NavController, public http: Http) {
-      this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
-            this.questions = data.results;
-          },
-          err => {
-            console.log("Oops!");
-          }
-        );
-      this.langForm = new FormGroup({
-        "langs": new FormControl({value: 'rust', disabled: false})
-      });
+  constructor(public navCtrl: NavController, public http: Http) {
+    this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
+      this.questions = data.results;
+    },
+    err => {
+      console.log("Oops!");
     }
+  );
+  this.questionForm = new FormGroup({
+    "answers": new FormControl({value: 'nope', disabled: false})
+  });
+}
 
-    doSubmit(event) {
-      console.log('Submitting form', this.langForm.value);
-      event.preventDefault();
-    }
-
-//   questions: any;
-//   answers: any;
-//
-//   constructor(public navCtrl: NavController, public http: Http) {
-//
-//     this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
-//       this.questions = data.results;
-//     },
-//     err => {
-//       console.log("Oops!");
-//     }
-//   );
-// }
-//
-// answer(){
-//   console.log("test");
-//   this.http.get('https://opentdb.com/api.php?amount=1&category=18&type=boolean').map(res => res.json()).subscribe(data => {
-//     this.questions = data.results;
-//   },
-//   err => {
-//     console.log("Oops!");
-//   }
-// );
-// }
+doSubmit(event) {
+  console.log('Submitting form', this.questionForm.value);
+  console.log('Answer : ', this.questions[0])
+  event.preventDefault();
+}
 
 }
